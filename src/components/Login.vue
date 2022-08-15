@@ -22,8 +22,8 @@ export default{
   data(){
     return{
         loginForm:{
-            username:'',
-            password:''
+            username:'admin',
+            password:'123'
         },
         responseResult:[]
     }
@@ -35,8 +35,12 @@ export default{
             password: this.loginForm.password
         })
         .then(successResponse => {
+            console.log(successResponse)
             if(successResponse.data.code === 200){
-                this.$router.replace({path:'/index'})
+                this.$store.commit('login', this.loginForm)
+                console.log(this.loginForm)
+                var path = this.$route.query.redirect
+                this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
             }
         })
         .catch(failResponse => {})
