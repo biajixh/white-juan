@@ -74,9 +74,6 @@ export default{
     background-size: cover;
     position: fixed;
 }
-#app {
-    margin:0px;
-}
 body {
     margin:0px;
 }
