@@ -15,13 +15,14 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
   name: 'NavMenu',
   data () {
     return {
       navList: [
-        // eslint-disable-next-line
-        {name: "/index", navItem: "首页"}
+        {name: "/index", navItem: "首页"},
+        {name: "/docGenerate", navItem: "开发文档编辑"}
       ]
     }
   }
