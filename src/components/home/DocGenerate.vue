@@ -16,17 +16,21 @@
          boxed
          sort="false"
        ></json-viewer>
-       <pre>{{keys}}</pre>
+       <el-table :data="keys" stripe border style="width: 100%">
+        <el-table-column prop="name" label="参数名"/>
+        <el-table-column prop="value" label="参数值"/>
+        <el-table-column prop="type" label="类型"/>
+        <el-table-column prop="remark" label="备注"/>
+       </el-table>
     </div>
 </template>
 <script>
-
 /* eslint-disable */
+//TODO 生成MD文件
 export default{
   name: 'DocGenerate',
   data() {
     return {
-      
       jsonString: "",
       jsonValue:{},
       keys: []
@@ -50,7 +54,13 @@ export default{
         key1 = key1.concat(this.convertJson2Aarry(jsonObject[0],str))
       }else if(jsonObject instanceof Object){
         for(let index in jsonObject){
-          key1.push(str+index)
+          let item = {
+            name: str+index,
+            value: jsonObject[index] instanceof Array ? "" : jsonObject[index],
+            type: Object.prototype.toString.call(jsonObject[index]),
+            remark: ""
+          }
+          key1.push(item)
           key1 = key1.concat(this.convertJson2Aarry(jsonObject[index],str+index+"."))
         }
       }
