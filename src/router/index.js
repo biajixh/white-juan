@@ -5,9 +5,11 @@ import Login from '@/components/Login'
 import AppIndex from '@/components/home/AppIndex'
 import DocGenerate from '@/components/home/DocGenerate'
 import Home from '@/components/home/Home'
+import CodeMirror from 'vue-codemirror-lite'
 
 Vue.use(Router)
 Vue.use(JSONView)
+Vue.use(CodeMirror)
 
 export default new Router({
   routes: [
