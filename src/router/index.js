@@ -4,6 +4,7 @@ import JSONView from 'vue-json-viewer'
 import Login from '@/components/Login'
 import AppIndex from '@/components/home/AppIndex'
 import DocGenerate from '@/components/home/DocGenerate'
+import EditNav from '@/components/home/EditNav'
 import Home from '@/components/home/Home'
 import CodeMirror from 'vue-codemirror-lite'
 
@@ -38,6 +39,15 @@ export default new Router({
           name: 'DocGenerate',
           reder: h => h(DocGenerate),
           component: DocGenerate,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/editNav',
+          name: 'EditNav',
+          reder: h => h(EditNav),
+          component: EditNav,
           meta: {
             requireAuth: true
           }

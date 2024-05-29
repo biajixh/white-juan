@@ -20,11 +20,23 @@ export default {
   name: 'NavMenu',
   data () {
     return {
-      navList: [
-        {name: "/index", navItem: "首页"},
-        {name: "/docGenerate", navItem: "开发文档编辑"}
-      ]
+      navList: []
     }
+  },
+  methods:{
+    findNavItem () {
+        this.$axios.get('/navItem/findAll')
+        .then(successResponse => {
+            console.log(successResponse)
+            if(successResponse.data.code === 200){
+              this.navList = successResponse.data.data
+            }
+        })
+        .catch(failResponse => {})
+    }
+  },
+  mounted () {
+    this.findNavItem()
   }
 }
 </script>
